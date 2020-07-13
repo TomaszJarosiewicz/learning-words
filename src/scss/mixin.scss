@@ -1,0 +1,14 @@
+@mixin global-size($width: 100%, $height: 100vh) {
+    width: $width;
+    height: $height;
+}
+
+@mixin global-reset($margin: 0, $padding: 0) {
+    margin: $margin;
+    padding: $padding;
+}
+
+@mixin grid($display, $col) {
+    display: $display;
+    grid-template-columns: $col;
+}
