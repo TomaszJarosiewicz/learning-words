@@ -39,8 +39,13 @@
                             font-size: $font-size + 8;
                         }
 
-                        &.word-name  {
+                        &.word-name {
                             font-size: $font-size + 12;
+                        }
+
+                        &.word-description {
+                            font-size: $font-size;
+                            color: $color-last;
                         }
 
                         &.navigation {
@@ -207,7 +212,7 @@
                             font-size: $font-size + 4;
                         }
 
-                        &.word-name  {
+                        &.word-name {
                             font-size: $font-size + 6;
                         }
 
