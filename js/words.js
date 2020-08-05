@@ -20,8 +20,8 @@ export const words =
         },
         {
             id: 4,
-            request: 'Przepis',
-            response: 'Recipe',
+            request: 'przepis',
+            response: 'recipe',
             description: null
         },
         {
