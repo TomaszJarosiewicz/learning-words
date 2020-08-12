@@ -5,6 +5,7 @@ class LearningWords {
         this.allWords = Object.assign(words);
         this.chooseWords = [];
         this.enableChoose = false;
+        this.isButtonActiveVisibility = true;
         this.currentWord = {};
         this.nextCurrentWord = [];
     }
@@ -28,75 +29,63 @@ class LearningWords {
             this.chooseWords.push(this.currentWord);
         }
     }
-    nextDrawWord() {
-        this.nextCurrentWord.push(this.currentWord);
-        return this.drawWord();
-    }
 }
 
 const learningWords = new LearningWords(words);
 learningWords.drawWord();
-learningWords.nextDrawWord();
-// method playsWord -> innerHTML
 
-const displayWords = (() => {
+(() => {
     const numberQuestion = document.querySelector('#numberQuestion');
     const lastNumberQuestion = document.querySelector('#lastNumberQuestion');
     const polishWord = document.querySelector('#polishWord');
     const englishWord = document.querySelector('#englishWord');
     const description = document.querySelector('#description');
-    englishWord.style.display = "none";
-    description.style.display = "none";
-
-    let returnWord = [learningWords.currentWord];
-    let returnNextWord = learningWords.nextCurrentWord;
-    const lengthWords = learningWords.allWords.length;
-    let returnNumberQuestion = [returnWord].length;
-
-    lastNumberQuestion.innerHTML = lengthWords;
-    numberQuestion.innerHTML = returnNumberQuestion;
+    let dataWords = document.querySelectorAll('[data-word]');
+    for(let dataWord of dataWords) {
+        console.dir(dataWord);
+    }
 
     const displayWords = () => {
-        returnWord.forEach(word => {
-            polishWord.innerHTML = word.request;
-            englishWord.innerHTML = word.response;
-            description.innerHTML = word.description;
-        });
+        polishWord.innerHTML = learningWords.currentWord.request;
+        englishWord.innerHTML = learningWords.currentWord.response;
+        description.innerHTML = learningWords.currentWord.description;
     }
 
-    const displayNextWords = () => {
-        returnNextWord.forEach(word => {
-            polishWord.innerHTML = word.request;
-            englishWord.innerHTML = word.response;
-            description.innerHTML = word.description;
-        });
+    const activeButton = (enabledElement, disabledElement) => {
+        enabledElement.disabled = !learningWords.isButtonActiveVisibility;
+        disabledElement.disabled = learningWords.isButtonActiveVisibility;
     }
 
-    const displayNextQuestion = () => {
+    // const activeWords = (enabledWords, disabledWords) {
+    //     // englishWord.style.display = "block";
+    //     // description.style.display = "block";
+    // }
+
     const showBtn = document.querySelector('#showBtn');
-    const next = document.querySelector('#next');
+    const nextQuestion = document.querySelector('#next');
 
-        showBtn.addEventListener('click', (e) => {
-            englishWord.style.display = "block";
-            description.style.display = "block";
-            if(e.isTrusted) {
-                next.addEventListener('click', () => {
-                    if(lengthWords >= returnNumberQuestion) {
-                        numberQuestion.innerHTML = returnNumberQuestion++;
-                    }
-                    displayNextWords();
-                });
-            }
-        });
-    }
+    const { allWords, chooseWords } = learningWords;
+    lastNumberQuestion.innerHTML = allWords.length;
+    numberQuestion.innerHTML = chooseWords.length;
 
-    return {
-        showWord: () => {
-            displayWords();
-            displayNextQuestion();
-        },
-    }
+    activeButton(showBtn, nextQuestion);
+
+    showBtn.addEventListener('click', () => {
+        englishWord.style.display = "block";
+        description.style.display = "block";
+        displayWords();
+        activeButton(nextQuestion, showBtn);
+    });
+
+    nextQuestion.addEventListener('click', () => {
+        englishWord.style.display = "none";
+        description.style.display = "none";
+        learningWords.drawWord();
+        displayWords();
+        numberQuestion.innerHTML = chooseWords.length;
+        activeButton(showBtn, nextQuestion);
+    });
+
+     displayWords();
 
 })();
-
-displayWords.showWord();
