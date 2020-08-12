@@ -6,7 +6,7 @@ class LearningWords {
         this.chooseWords = [];
         this.enableChoose = false;
         this.currentWord = {};
-        this.showNextWord = [];
+        this.nextCurrentWord = [];
     }
 
     random() {
@@ -28,10 +28,15 @@ class LearningWords {
             this.chooseWords.push(this.currentWord);
         }
     }
+    nextDrawWord() {
+        this.nextCurrentWord.push(this.currentWord);
+        return this.drawWord();
+    }
 }
 
 const learningWords = new LearningWords(words);
 learningWords.drawWord();
+learningWords.nextDrawWord();
 // method playsWord -> innerHTML
 
 const displayWords = (() => {
@@ -44,6 +49,7 @@ const displayWords = (() => {
     description.style.display = "none";
 
     let returnWord = [learningWords.currentWord];
+    let returnNextWord = learningWords.nextCurrentWord;
     const lengthWords = learningWords.allWords.length;
     let returnNumberQuestion = [returnWord].length;
 
@@ -52,6 +58,14 @@ const displayWords = (() => {
 
     const displayWords = () => {
         returnWord.forEach(word => {
+            polishWord.innerHTML = word.request;
+            englishWord.innerHTML = word.response;
+            description.innerHTML = word.description;
+        });
+    }
+
+    const displayNextWords = () => {
+        returnNextWord.forEach(word => {
             polishWord.innerHTML = word.request;
             englishWord.innerHTML = word.response;
             description.innerHTML = word.description;
@@ -70,6 +84,7 @@ const displayWords = (() => {
                     if(lengthWords >= returnNumberQuestion) {
                         numberQuestion.innerHTML = returnNumberQuestion++;
                     }
+                    displayNextWords();
                 });
             }
         });
@@ -85,19 +100,3 @@ const displayWords = (() => {
 })();
 
 displayWords.showWord();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
