@@ -10,40 +10,26 @@
 </head>
 <body>
     <main>
-        <section class="container bg">
-            <header>
-                <h1 class="page-title">Learning words</h1>
-                <p class="page-subtitle">this program is to learn words english</p>
-            </header>
-            <ul class="box">
-                <li class="word">
-                    <span id="numberQuestion"></span><strong>&nbsp;with&nbsp;</strong><span id="lastNumberQuestion"></span>
-                </li>
-                <div id="test">
-                    <li class="word-name">
-                        <span data-word="polishWord"></span>
-                    </li>
-                    <li class="word-name">
-                        <span data-word="englishWord"></span>
-                    </li>
-                    <li class="word-description">
-                        <span data-word="description"></span>
-                    </li>
+        <section class="container">
+            <div class="box">
+                <div class="box-header">
+                    <span>You are learning words</span>
                 </div>
-                <li class="navigation">
-                    <ul>
-                        <li>
-                            <button type="button" id="prev" class="btn btn-nav nav-prev"></button>
-                        </li>
-                        <li>
-                            <button type="button" id="showBtn" class="btn btn-nav btn-show">show</button>
-                        </li>
-                        <li>
-                            <button type="button" id="next" class="btn btn-nav nav-next"></button>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                <div class="box-body">
+                    <div class="box-numberQuestion">
+                        <span id="numberQuestion"></span>&nbsp;with&nbsp;<span id="lastNumberQuestion"></span>
+                    </div>
+                    <div id="box-words">
+                        <div class="word-name"></div>
+                        <div class="word-name"></div>
+                        <div class="word-description"></div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="button" id="showBtn" class="btn btn-show">show</button>
+                    <button type="button" id="next" class="btn btn-next">next</button>
+                </div>
+            </div>
         </section>
     </main>
 </body>
