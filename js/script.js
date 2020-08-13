@@ -37,29 +37,33 @@ learningWords.drawWord();
 (() => {
     const numberQuestion = document.querySelector('#numberQuestion');
     const lastNumberQuestion = document.querySelector('#lastNumberQuestion');
-    const polishWord = document.querySelector('#polishWord');
-    const englishWord = document.querySelector('#englishWord');
-    const description = document.querySelector('#description');
     let dataWords = document.querySelectorAll('[data-word]');
-    for(let dataWord of dataWords) {
-        console.dir(dataWord);
-    }
+
+    // const activeWords = (enabledWords, disabledWords) => {
+    //     enabledWords.display = "block";
+    //     enabledWords.display = "block";
+    //     disabledWords.style.display = "none";
+    //     disabledWords.style.display = "none";
+    // }
 
     const displayWords = () => {
-        polishWord.innerHTML = learningWords.currentWord.request;
-        englishWord.innerHTML = learningWords.currentWord.response;
-        description.innerHTML = learningWords.currentWord.description;
+        for(let dataWord of dataWords) {
+            if(dataWord.dataset.word === 'polishWord') {
+                dataWord.innerHTML = learningWords.currentWord.request;
+            }
+            if(dataWord.dataset.word === 'englishWord') {
+                dataWord.innerHTML = learningWords.currentWord.response;
+            }
+            if(dataWord.dataset.word === 'description') {
+                dataWord.innerHTML = learningWords.currentWord.description;
+            }
+        }
     }
 
     const activeButton = (enabledElement, disabledElement) => {
         enabledElement.disabled = !learningWords.isButtonActiveVisibility;
         disabledElement.disabled = learningWords.isButtonActiveVisibility;
     }
-
-    // const activeWords = (enabledWords, disabledWords) {
-    //     // englishWord.style.display = "block";
-    //     // description.style.display = "block";
-    // }
 
     const showBtn = document.querySelector('#showBtn');
     const nextQuestion = document.querySelector('#next');
@@ -71,15 +75,15 @@ learningWords.drawWord();
     activeButton(showBtn, nextQuestion);
 
     showBtn.addEventListener('click', () => {
-        englishWord.style.display = "block";
-        description.style.display = "block";
+        // englishWord.style.display = "block";
+        // description.style.display = "block";
         displayWords();
         activeButton(nextQuestion, showBtn);
     });
 
     nextQuestion.addEventListener('click', () => {
-        englishWord.style.display = "none";
-        description.style.display = "none";
+        // englishWord.style.display = "none";
+        // description.style.display = "none";
         learningWords.drawWord();
         displayWords();
         numberQuestion.innerHTML = chooseWords.length;
