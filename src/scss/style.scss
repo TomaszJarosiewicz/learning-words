@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&family=Holtwood+One+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500;800&display=swap');
 @import 'variables', 'mixin';
 
 *,*::before,*::after {
@@ -19,111 +19,102 @@ body {
     background: $bg-global;
 }
 
-#englishWord {
-    display: none;
-}
-
 .btn {
-    background: $bg-one;
-    font-size: $font-size;
+    width: 160px;
+    padding: 14px;
+    font-size: $font-size - 6;
     color: $color-global;
     text-transform: uppercase;
     border: 0;
     border-radius: 12px;
+
+    &.btn-show {
+        background: $bg-show;
+
+        &:hover {
+            opacity: .9;
+        }
+    }
+
+    &.btn-next {
+        background: $bg-next;
+
+        &:hover {
+            opacity: .9;
+        }
+    }
 }
 
 .container {
-    @include grid(grid, 1fr);
-    place-items: center;
+    @include flex(center, center, column);
     @include global-size;
 
-    &.bg {
-        background-image: url("../../images/night-1149601_1920.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        @include global-size;
-    }
-
-    .page-title {
-        font-family: 'Holtwood One SC', serif;
-        color: $color-global;
-        text-transform: uppercase;
-    }
-
-    .page-subtitle {
+    .box {
+        position: relative;
+        @include flex(center, center, column);
+        width: 450px;
+        background: $bg-global;
         font-family: 'Fira Sans', sans-serif;
-        color: $color-child;
-        letter-spacing: 2px;
-    }
 
-    ul {
-        margin: 0 auto;
-        list-style-type: none;
+        &::before {
+            content: "";
+            position: $absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 100%;
+            background: $bg-light;
+        }
 
-        &.box {
-            @include grid(grid, 1fr);
-            place-items: center;
-            position: relative;
-            background: #fffffff2;
+        &::after {
+            content: "";
+            position: $absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            background: $bg-light;
+        }
 
-            &::before {
-                content: "";
-                position: $absolute;
-                top: 0;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background-image: url("../../images/question.svg");
-                background-size: 100%;
-                z-index: 1;
+        .box-header, .box-footer {
+            width: 100%;
+            padding: 20px;
+            background: $bg-light;
+            font-size: $font-size;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: $color-last;
+        }
+
+        .box-body {
+            width: 100%;
+            height: 222px;
+            margin: 50px 0;
+        }
+
+        #box-words {
+            margin-top: 50px;
+            overflow: hidden;
+
+            & > div {
+                margin-top: 15px;
             }
 
-            &::after {
-                content: "";
-                position: $absolute;
-                top: 0;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                border-radius: 50%;
-                background: $bg-one;
+            & > div:nth-child(1), div:nth-child(2) {
+                font-size: $font-size;
+                font-weight: 800;
+                text-transform: uppercase;
             }
 
-            li {
-                font-family: 'Fira Sans', sans-serif;
-                font-weight: bold;
-                letter-spacing: 2px;
-                text-transform: none;
-
-                &.navigation {
-
-                    ul {
-
-                        li {
-                            height: 50px;
-
-                                .btn-nav {
-                                    padding: 14px 30px;
-                                    background-repeat: no-repeat;
-                                    background-size: 50%;
-                                    background-position: center;
-                                    height: 100%;
-
-                                    &.nav-prev {
-                                        background-image: url("../../images/return.svg");
-                                    }
-
-                                    &.btn-show {
-                                        width: $width;
-                                    }
-
-                                    &.nav-next {
-                                        background-image: url("../../images/next.svg");
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            & > div:nth-child(3) {
+                font-size: $font-size - 4;
+                font-weight: 500;
+                color: $color-last;
             }
         }
+
+        .box-footer {
+            @include flex(center, center, row);
+        }
     }
+}

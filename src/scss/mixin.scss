@@ -8,7 +8,9 @@
     padding: $padding;
 }
 
-@mixin grid($display, $col) {
-    display: $display;
-    grid-template-columns: $col;
+@mixin flex($justify, $align, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
 }
