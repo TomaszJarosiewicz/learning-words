@@ -37,33 +37,33 @@ learningWords.drawWord();
 (() => {
     const numberQuestion = document.querySelector('#numberQuestion');
     const lastNumberQuestion = document.querySelector('#lastNumberQuestion');
-    let dataWords = document.querySelectorAll('[data-word]');
+    const boxWords = document.querySelector('#box-words');
 
-    // const activeWords = (enabledWords, disabledWords) => {
-    //     enabledWords.display = "block";
-    //     enabledWords.display = "block";
-    //     disabledWords.style.display = "none";
-    //     disabledWords.style.display = "none";
-    // }
+    const activeWords = (firstElement, secondElement) => {
+        firstElement.style.display = "block";
+        secondElement.style.display = "block";
+    }
 
-    const displayWords = () => {
-        for(let dataWord of dataWords) {
-            if(dataWord.dataset.word === 'polishWord') {
-                dataWord.innerHTML = learningWords.currentWord.request;
-            }
-            if(dataWord.dataset.word === 'englishWord') {
-                dataWord.innerHTML = learningWords.currentWord.response;
-            }
-            if(dataWord.dataset.word === 'description') {
-                dataWord.innerHTML = learningWords.currentWord.description;
-            }
-        }
+    const disableWords = (firstElement, secondElement) => {
+        firstElement.style.display = "none";
+        secondElement.style.display = "none";
     }
 
     const activeButton = (enabledElement, disabledElement) => {
-        enabledElement.disabled = !learningWords.isButtonActiveVisibility;
-        disabledElement.disabled = learningWords.isButtonActiveVisibility;
+        // enabledElement.disabled = !learningWords.isButtonActiveVisibility;
+        // disabledElement.disabled = learningWords.isButtonActiveVisibility;
+        enabledElement.style.display = 'block';
+        disabledElement.style.display = 'none';
     }
+
+    const displayWords = () => {
+        const { currentWord } = learningWords;
+        boxWords.children[0].innerHTML = currentWord.request;
+        boxWords.children[1].innerHTML = currentWord.response;
+        boxWords.children[2].innerHTML = currentWord.description;
+    }
+
+    disableWords(boxWords.children[1], boxWords.children[2]);
 
     const showBtn = document.querySelector('#showBtn');
     const nextQuestion = document.querySelector('#next');
@@ -75,18 +75,19 @@ learningWords.drawWord();
     activeButton(showBtn, nextQuestion);
 
     showBtn.addEventListener('click', () => {
-        // englishWord.style.display = "block";
-        // description.style.display = "block";
+        activeWords(boxWords.children[1], boxWords.children[2]);
         displayWords();
         activeButton(nextQuestion, showBtn);
     });
 
     nextQuestion.addEventListener('click', () => {
-        // englishWord.style.display = "none";
-        // description.style.display = "none";
+        disableWords(boxWords.children[1], boxWords.children[2]);
         learningWords.drawWord();
         displayWords();
         numberQuestion.innerHTML = chooseWords.length;
+        if(chooseWords.length === 10) {
+            nextQuestion.disabled = learningWords.isButtonActiveVisibility;
+        }
         activeButton(showBtn, nextQuestion);
     });
 
