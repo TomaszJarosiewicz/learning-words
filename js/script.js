@@ -85,7 +85,7 @@ learningWords.drawWord();
         learningWords.drawWord();
         displayWords();
         numberQuestion.innerHTML = chooseWords.length;
-        if(chooseWords.length === 10) {
+        if(chooseWords.length === allWords.length) {
             nextQuestion.disabled = learningWords.isButtonActiveVisibility;
         }
         activeButton(showBtn, nextQuestion);
