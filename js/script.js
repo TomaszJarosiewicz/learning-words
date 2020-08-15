@@ -4,8 +4,8 @@ class LearningWords {
     constructor(words) {
         this.allWords = Object.assign(words);
         this.chooseWords = [];
-        // this.enableChoose = false;
-        this.isButtonActiveVisibility = true;
+        this.enableChoose = false;
+        // this.isButtonActiveVisibility = true;
         this.currentWord = {};
     }
 
