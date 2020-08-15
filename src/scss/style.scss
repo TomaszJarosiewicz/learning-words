@@ -20,9 +20,9 @@ body {
 }
 
 .btn {
-    width: 160px;
-    padding: 14px;
-    font-size: $font-size - 6;
+    width: 140px;
+    padding: 12px;
+    font-size: $font-size - 7;
     color: $color-global;
     text-transform: uppercase;
     border: 0;
@@ -43,18 +43,26 @@ body {
             opacity: .9;
         }
     }
+
+    &.btn-repeat {
+        background: $bg-repeat;
+
+        &:hover {
+            opacity: .9;
+        }
+    }
 }
 
 .container {
     @include flex(center, center, column);
     @include global-size;
+    font-family: 'Fira Sans', sans-serif;
 
     .box {
         position: relative;
         @include flex(center, center, column);
         width: 450px;
         background: $bg-global;
-        font-family: 'Fira Sans', sans-serif;
 
         &::before {
             content: "";
@@ -77,23 +85,50 @@ body {
         }
 
         .box-header, .box-footer {
+            @include flex(center, center, column);
             width: 100%;
-            padding: 20px;
+            height: 80px;
             background: $bg-light;
             font-size: $font-size;
             font-weight: 800;
             text-transform: uppercase;
-            color: $color-last;
+        }
+
+        .box-header {
+
+            span {
+                color: $color-last;
+            }
         }
 
         .box-body {
+            position: relative;
             width: 100%;
-            height: 222px;
-            margin: 50px 0;
+            height: 186px;
+            margin: 30px 0;
+
+            #repear-word {
+
+                .repear-description {
+                    @include flex(center, center, column);
+                    position: $absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 50%;
+                    height: 186px;
+                    background: $bg-global;
+
+                    p {
+                        font-size: $font-size;
+                        font-weight: 500;
+                    }
+                }
+            }
         }
 
         #box-words {
-            margin-top: 50px;
+            margin-top: 30px;
             overflow: hidden;
 
             & > div {
@@ -104,6 +139,7 @@ body {
                 font-size: $font-size;
                 font-weight: 800;
                 text-transform: uppercase;
+                letter-spacing: 2px;
             }
 
             & > div:nth-child(3) {
@@ -115,6 +151,23 @@ body {
 
         .box-footer {
             @include flex(center, center, row);
+        }
+    }
+
+    .add-word {
+        @include flex(space-between, center, row);
+        width: 320px;
+        margin-top: 50px;
+
+        img {
+            width: 34px;
+            height: 34px;
+            transform: scale(1);
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.06);
+            }
         }
     }
 }
