@@ -5,7 +5,7 @@ class LearningWords {
         this.allWords = Object.assign(words);
         this.chooseWords = [];
         this.enableChoose = false;
-        // this.isButtonActiveVisibility = true;
+        this.isButtonActiveVisibility = true;
         this.currentWord = {};
     }
 
@@ -38,8 +38,10 @@ learningWords.drawWord();
     const lastNumberQuestion = document.querySelector('#lastNumberQuestion');
     const boxWords = document.querySelector('#box-words');
     const repeatWords = document.querySelector('#repear-word');
+    const addForm = document.querySelector('#add-form');
+    const btnForm = document.querySelector('#btn-form');
     let counter = 0;
-    repeatWords.style.display = "none";
+    btnForm.style.display = "none";
 
     const enableDisplay = (firstElement, secondElement) => {
         firstElement.style.display = "block";
@@ -66,10 +68,12 @@ learningWords.drawWord();
     }
 
     disableDisplay(boxWords.children[1], boxWords.children[2]);
+    disableDisplay(repeatWords, addForm);
 
     const showBtn = document.querySelector('#showBtn');
     const nextQuestion = document.querySelector('#next');
     const repeatBtn = document.querySelector('#repeat');
+    const addWords = document.querySelector('.add-word');
     repeatBtn.style.display = 'none';
 
     const { allWords, chooseWords } = learningWords;
@@ -102,10 +106,32 @@ learningWords.drawWord();
         }
     });
 
+    displayWords(btnForm.children[0], btnForm.children[1]);
+
     repeatBtn.addEventListener('click', () => {
         location.reload();
     });
 
-    displayWords();
+    addWords.addEventListener('click', () => {
+        activeElement(btnForm, showBtn);
+        addForm.style.display = "block";
+    });
+
+    btnForm.children[0].addEventListener('click', () => {
+        disableDisplay(btnForm, addForm);
+        showBtn.style.display = "block";
+    });
+
+    const inputs = document.querySelectorAll('#add-form > input');
+
+    btnForm.children[1].addEventListener('click', () => {
+        for(let input of inputs) {
+            if(input.value === '') {
+                input.style.border = "1px solid #b14506";
+            } else {
+                input.style.border = "1px solid #706f6f";
+            }
+        }
+    });
 
 })();
