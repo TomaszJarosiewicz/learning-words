@@ -51,6 +51,22 @@ body {
             opacity: .9;
         }
     }
+
+    &.btn-cancel {
+        background: $bg-cancel;
+
+        &:hover {
+            opacity: .9;
+        }
+    }
+
+    &.btn-add {
+        background: $bg-add;
+
+        &:hover {
+            opacity: .9;
+        }
+    }
 }
 
 .container {
@@ -125,6 +141,25 @@ body {
                     }
                 }
             }
+
+            #add-form {
+                @include flex(center,flex-start, column);
+                position: $absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                height: 186px;
+                padding: 0 50px;
+                background: $bg-global;
+
+                input {
+                    width: 100%;
+                    padding: 10px;
+                    margin: 10px 0;
+                    border: 1px solid $color-last;
+                }
+            }
         }
 
         #box-words {
@@ -151,6 +186,10 @@ body {
 
         .box-footer {
             @include flex(center, center, row);
+
+            #btn-form {
+                @include flex(space-around, center, row);
+            }
         }
     }
 

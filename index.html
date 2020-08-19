@@ -29,17 +29,26 @@
                             <p>Do you would like repeat words ?</p>
                         </div>
                     </div>
+                    <form id="add-form">
+                        <input type="text" placeholder="Polish word" value="" required>
+                        <input type="text" placeholder="English word" value="" required>
+                        <input type="text" placeholder="Description" value="" required>
+                    </form>
                 </div>
                 <div class="box-footer">
                     <button type="button" id="showBtn" class="btn btn-show">show</button>
                     <button type="button" id="next" class="btn btn-next">next</button>
                     <button type="button" id="repeat" class="btn btn-repeat">repeat</button>
+                    <div id="btn-form">
+                        <button type="button" id="save" class="btn btn-cancel">cancel</button>
+                        <button type="button" id="cancel" class="btn btn-add">save</button>
+                    </div>
                 </div>
             </div>
-            <!-- <div class="add-word">
+            <div class="add-word">
                 <p>Do you want add word ?</p>
-                <img src="images/plus.svg" alt="add_word">
-            </div> -->
+                <img id="addWords" src="images/plus.svg" alt="add_word">
+            </div>
         </section>
     </main>
 </body>
