@@ -7,6 +7,8 @@ class LearningWords {
         this.enableChoose = false;
         this.isButtonActiveVisibility = true;
         this.currentWord = {};
+        this.newWords = {};
+        this.createWords = {};
     }
 
     random() {
@@ -28,6 +30,21 @@ class LearningWords {
             this.chooseWords.push(this.currentWord);
         }
     }
+    addNewWords() {
+        this.allWords.find(word => {
+            if(this.newWords.request === word.request) {
+                console.log('Error');
+            } else {
+                this.createWords.id = word.id + 1;
+                this.createWords.request = this.newWords.request;
+                this.createWords.response = this.newWords.response;
+                this.createWords.description = this.newWords.description;
+            }
+        });
+        this.allWords.push(this.createWords);
+        console.log(this.allWords.length)
+    }
+
 }
 
 const learningWords = new LearningWords(words);
@@ -128,10 +145,15 @@ learningWords.drawWord();
         for(let input of inputs) {
             if(input.value === '') {
                 input.style.border = "1px solid #b14506";
+                // learningWords.addNewWords = input.children[0];
             } else {
                 input.style.border = "1px solid #706f6f";
             }
         }
+        learningWords.newWords.request = inputs[0].value;
+        learningWords.newWords.response = inputs[1].value;
+        learningWords.newWords.description = inputs[2].value;
+        learningWords.addNewWords();
     });
 
 })();
