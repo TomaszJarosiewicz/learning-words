@@ -5,7 +5,7 @@
   "main": "js/script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run scss",
+    "start": "npm run scss & http-server -o",
     "scss": "node-sass --watch --include-path scss src/scss/ -o dist/css/"
   },
   "author": "",
