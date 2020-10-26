@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning words</title>
-    <link rel="stylesheet" href="dist/css/style.css">
-    <link rel="stylesheet" href="dist/css/media.css">
-    <script type="module" src="js/script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning words</title>
+  <link rel="stylesheet" href="dist/css/style.css">
+  <link rel="stylesheet" href="dist/css/media.css">
 </head>
 <body>
-    <main>
-        <section class="container">
-            <div class="box">
-                <div class="box-header">
-                    <span>You learn words</span>
-                </div>
-                <div class="box-body">
-                    <div class="box-numberQuestion">
-                        <span id="numberQuestion"></span>&nbsp;with&nbsp;<span id="lastNumberQuestion"></span>
-                    </div>
-                    <div id="box-words">
-                        <div class="word-name"></div>
-                        <div class="word-name"></div>
-                        <div class="word-description"></div>
-                    </div>
-                    <div id="repear-word">
-                        <div class="repear-description">
-                            <p>Do you would like repeat words ?</p>
-                        </div>
-                    </div>
-                    <form id="add-form">
-                        <input type="text" placeholder="Polish word" value="" required>
-                        <input type="text" placeholder="English word" value="" required>
-                        <input type="text" placeholder="Description" value="" required>
-                    </form>
-                </div>
-                <div class="box-footer">
-                    <button type="button" id="showBtn" class="btn btn-show">show</button>
-                    <button type="button" id="next" class="btn btn-next">next</button>
-                    <button type="button" id="repeat" class="btn btn-repeat">repeat</button>
-                    <div id="btn-form">
-                        <button type="button" id="save" class="btn btn-cancel">cancel</button>
-                        <button type="button" id="cancel" class="btn btn-add">save</button>
-                    </div>
-                </div>
+  <main>
+    <section class="container">
+      <div class="box">
+        <div class="box-header">
+          <span>You learn words</span>
+        </div>
+        <div class="box-body">
+          <div class="box-numberQuestion">
+            <span id="numberQuestion"></span>&nbsp;with&nbsp;<span id="lastNumberQuestion"></span>
+          </div>
+          <div id="box-words">
+            <div class="word-name"></div>
+            <div class="word-name"></div>
+            <div class="word-description"></div>
+          </div>
+          <div id="repeat-word">
+            <div class="repeat-description">
+              <p>Do you would like repeat words ?</p>
             </div>
-            <div class="add-word">
-                <p>Do you want add word ?</p>
-                <img id="addWords" src="images/plus.svg" alt="add_word">
+          </div>
+          <form id="add-form">
+            <input type="text" placeholder="Polish word" value="" required>
+            <input type="text" placeholder="English word" value="" required>
+            <input type="text" placeholder="Description" value="" required>
+            <div id="btn-form">
+              <button type="button" id="save" class="btn btn-cancel">cancel</button>
+              <button type="button" id="cancel" class="btn btn-add">save</button>
             </div>
-        </section>
-    </main>
+          </form>
+        </div>
+        <div class="box-footer">
+          <button type="button" id="showBtn" class="btn btn-show">show</button>
+          <button type="button" id="next" class="btn btn-next">next</button>
+          <button type="button" id="repeat" class="btn btn-repeat">repeat</button>
+        </div>
+      </div>
+      <div class="add-word">
+        <p>Do you want add word ?</p>
+        <img id="addWords" src="images/plus.svg" alt="add_word">
+      </div>
+    </section>
+  </main>
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>
